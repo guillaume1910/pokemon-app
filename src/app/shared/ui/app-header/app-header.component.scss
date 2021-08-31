@@ -1,0 +1,20 @@
+@use '~@angular/material' as mat;
+
+.flex {
+  flex: 1;
+}
+
+.ui-app-header {
+  background-color: mat.get-color-from-palette(mat.$grey-palette, 800),;
+  color: white
+}
+
+.ui-app-header-brand {
+  align-items: center;
+  display: flex;
+  font-family: Lato, Roboto, Lucida Sans, Arial, 'sans-serif';
+}
+
+.ui-app-header-logo img {
+  width: 36px;
+}
