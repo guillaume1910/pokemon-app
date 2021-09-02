@@ -1,8 +1,9 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {PokemonCardDTO} from '../models/pokemon-card-dto.model';
-import {PokemonQueryParams} from '../models/pokemon-query-params';
+import {PokemonCardDTO} from '../models/pokemon/pokemon-card-dto.model';
+import {PokemonQueryParams} from '../models/pokemon/pokemon-query-params';
+import {ApiResponse} from '../models/generic/api-response.model';
 
 
 @Injectable({
@@ -17,8 +18,8 @@ export class PokemonDataService {
     return this.http.get<PokemonCardDTO>(this.buildUrl("swsh4-25"));
   }
 
-  searchCard(queryParams: PokemonQueryParams) {
-    return this.http.get<PokemonCardDTO>('https://api.pokemontcg.io/v2/cards', { params: {...queryParams}});
+  searchCard(queryParams: PokemonQueryParams): Observable<ApiResponse<PokemonCardDTO[]>> {
+    return this.http.get<ApiResponse<PokemonCardDTO[]>>('https://api.pokemontcg.io/v2/cards', { params: {...queryParams}});
   }
 
   private buildUrl(pokemonId: string) {

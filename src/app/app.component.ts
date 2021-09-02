@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {PokemonDataService} from './core/http/pokemon-data.service';
+import {CartStoreService} from './shared/services/cart-store.service';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -8,15 +9,12 @@ import {PokemonDataService} from './core/http/pokemon-data.service';
 })
 export class AppComponent implements OnInit {
   title = 'pokemon-app';
+  cartSize$: Observable<number> = this.cart.selectCartSize()
 
-
-  constructor(private facade: PokemonDataService) {
+  constructor(private cart: CartStoreService) {
   }
 
   ngOnInit(): void {
-    this.facade.getCardById('d').subscribe(r => console.log(r))
-
-    this.facade.searchCard({ q: 'name:charizard'}).subscribe(r => console.log(r))
   }
 
 
