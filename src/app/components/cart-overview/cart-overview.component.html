@@ -1,0 +1,24 @@
+<div class="cart-container" *ngIf="(cart$ | async)?.length else emptyCart">
+
+  <table class="mat-table" dense>
+    <tr class="mat-header-row">
+      <th class="mat-header-cell table-content--center">Card</th>
+      <th class="mat-header-cell table-content--center">Count</th>
+      <th class="mat-header-cell table-content--center">Price</th>
+    </tr>
+    <tr class="mat-row" *ngFor="let article of cart$ | async">
+      <td class="mat-cell table-content--center">{{article.pokemon.name}}</td>
+      <td class="mat-cell table-content--center">{{article.count}}</td>
+      <td class="mat-cell table-content--center">{{article.pokemon.cardmarket.prices.averageSellPrice * article.count | number: '1.2-2'}}</td>
+    </tr>
+  </table>
+
+  <div class="total-price-container">
+    <span class="total-price">Total : {{ totalPrice$ | async | number: '1.2-2' }}</span>
+  </div>
+</div>
+
+
+<ng-template #emptyCart>
+  <div class="message-empty-cart">Your cart is empty</div>
+</ng-template>

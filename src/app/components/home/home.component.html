@@ -1,22 +1,25 @@
 <div class="home-container">
-
   <div>
     <form [formGroup]="formGroup">
       <mat-form-field class="input-full-width" appearance="outline">
-        <mat-label>Favorite food</mat-label>
-        <input matInput formControlName="search">
+        <mat-label>Pokemon</mat-label>
+        <input matInput formControlName="search" placeholder="search by name">
       </mat-form-field>
     </form>
   </div>
 </div>
 
-<div class="card-container" *ngIf="(pokemonCard$ | async)?.data as data">
-  <ng-container *ngFor="let pokemon of data; trackBy: trackByFn">
-    <ui-card [title]="pokemon.name"
-             [img]="pokemon.images.small"
-             [count]="pokemon | countArticles | async"
-             (remove)="removePokemon(pokemon)"
-             (add)="addPokemon(pokemon)"></ui-card>
-  </ng-container>
 
+<div class="card-container" *ngIf="(pokemonCard$ | async) as pokemonCard">
+  <ng-container *ngIf="pokemonCard.data.length else noData">
+    <ng-container *ngFor="let pokemon of pokemonCard.data; trackBy: trackByFn">
+      <ui-card [title]="pokemon.name"
+               [img]="pokemon.images.small"
+               [count]="pokemon | countArticles | async"
+               (remove)="removePokemon(pokemon)"
+               (add)="addPokemon(pokemon)"></ui-card>
+    </ng-container>
+  </ng-container>
 </div>
+
+<ng-template #noData>No data</ng-template>

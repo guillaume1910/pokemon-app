@@ -1,0 +1,49 @@
+@use '~@angular/material' as mat;
+
+.cart-container {
+  margin: 1rem;
+}
+
+.message-empty-cart {
+  margin: 5rem;
+}
+
+.article-overview {
+  margin: 1rem
+}
+
+.total-price-container {
+  padding: 8px;
+  margin-top: 3rem;
+}
+
+.total-price {
+  @include mat.typography-level(mat.define-typography-config(), caption);
+  border-radius: 4px;
+  display: inline-block;
+  letter-spacing: 1px;
+  line-height: 1;
+  padding: 4px 8px;
+}
+
+.table-content--center {
+  text-align: center;
+}
+
+.mat-table {
+  width: 500px;
+}
+
+.mat-table[dense],
+.mat-table.es-ui-table--dense {
+  .mat-row,
+  .mat-header-row {
+    height: 36px;
+  }
+
+  .mat-cell,
+  .mat-header-cell {
+    padding-bottom: 8px;
+    padding-top: 8px;
+  }
+}

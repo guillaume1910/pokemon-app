@@ -1,11 +1,12 @@
 <ui-app-header [brand]="title">
-  <button mat-icon-button [matBadge]="cartSize$ | async">
+  <button mat-icon-button (click)="sidenav.open()" [matBadge]="cartSize$ | async">
     <mat-icon>shopping_cart</mat-icon>
   </button>
 </ui-app-header>
 
-<mat-sidenav-container class="example-container">
-
-  <mat-sidenav opened mode="side">Start content</mat-sidenav>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="push">
+    <app-cart-overview></app-cart-overview>
+  </mat-sidenav>
   <router-outlet></router-outlet>
 </mat-sidenav-container>

@@ -48,8 +48,20 @@ export class CartStoreService {
 
     if (pokemonExistInCart) {
       pokemonExistInCart.count -= 1
-      this.cart.next([...currentCart])
+
+      if(pokemonExistInCart.count === 0) {
+        const index = currentCart.indexOf(pokemonExistInCart)
+        currentCart.splice(index, 1)
+        this.cart.next([...currentCart])
+      }else {
+        this.cart.next([...currentCart])
+      }
+
     }
+  }
+
+  getTotalPrice(): Observable<number> {
+    return this.selectCart().pipe(map(cart => cart.reduce((sum, article) => sum + (article.count * article.pokemon.cardmarket.prices.averageSellPrice), 0)))
   }
 
 }
