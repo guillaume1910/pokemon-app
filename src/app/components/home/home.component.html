@@ -1,25 +1,37 @@
 <div class="home-container">
-  <div>
-    <form [formGroup]="formGroup">
-      <mat-form-field class="input-full-width" appearance="outline">
-        <mat-label>Pokemon</mat-label>
-        <input matInput formControlName="search" placeholder="search by name">
+    <form [formGroup]="formGroup" class="form-group">
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Pokemon Name</mat-label>
+        <input matInput formControlName="name" placeholder="search by name">
+      </mat-form-field>
+
+      <mat-form-field class="form-field" appearance="outline">
+        <mat-label>Rarities</mat-label>
+        <mat-select formControlName="rarity">
+          <mat-option>None</mat-option>
+          <mat-option *ngFor="let rarity of rarities$ | async" [value]="rarity">
+            {{rarity}}
+          </mat-option>
+        </mat-select>
       </mat-form-field>
     </form>
-  </div>
 </div>
 
 
-<div class="card-container" *ngIf="(pokemonCard$ | async) as pokemonCard">
-  <ng-container *ngIf="pokemonCard.data.length else noData">
+<div class="card-container" *ngIf="!isLoading && (pokemonCard$ | async) as pokemonCard">
+  <ng-container *ngIf="pokemonCard && pokemonCard.data.length else noData">
     <ng-container *ngFor="let pokemon of pokemonCard.data; trackBy: trackByFn">
       <ui-card [title]="pokemon.name"
                [img]="pokemon.images.small"
                [count]="pokemon | countArticles | async"
                (remove)="removePokemon(pokemon)"
-               (add)="addPokemon(pokemon)"></ui-card>
+               (add)="addPokemon(pokemon)">
+        <div><span> Price: {{pokemon?.cardmarket?.prices?.averageSellPrice}}</span></div>
+      </ui-card>
     </ng-container>
   </ng-container>
 </div>
 
 <ng-template #noData>No data</ng-template>
+
+<mat-spinner *ngIf="isLoading" class="home-loader"></mat-spinner>

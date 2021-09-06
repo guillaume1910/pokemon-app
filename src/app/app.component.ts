@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {CartStoreService} from './shared/services/cart-store.service';
 import {Observable} from 'rxjs';
+import {AppService} from './app.service';
 
 @Component({
   selector: 'app-root',
@@ -9,9 +9,9 @@ import {Observable} from 'rxjs';
 })
 export class AppComponent implements OnInit {
   title = 'pokemon-app';
-  cartSize$: Observable<number> = this.cart.selectCartSize()
+  cartSize$: Observable<number> = this.facade.cartSize$
 
-  constructor(private cart: CartStoreService) {
+  constructor(private facade: AppService) {
   }
 
   ngOnInit(): void {

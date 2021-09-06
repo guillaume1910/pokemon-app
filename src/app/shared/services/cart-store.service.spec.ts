@@ -1,5 +1,6 @@
-import { TestBed } from '@angular/core/testing';
+import {async, TestBed} from '@angular/core/testing';
 import {CartStoreService} from './cart-store.service';
+import {PokemonCardDTO} from '../../core/models/pokemon/pokemon-card-dto.model';
 
 
 describe('CartPokemonStoreService', () => {
@@ -13,4 +14,31 @@ describe('CartPokemonStoreService', () => {
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
+
+  it('should add Article', async(() => {
+    let store: CartStoreService;
+    store = TestBed.get(CartStoreService);
+    const testCart: PokemonCardDTO = {
+      id: '1234',
+      name: 'test'
+    };
+    store.articleAdded(testCart);
+    store.selectCart().subscribe(cart => {
+      expect(cart).toEqual([{count: 1, pokemon: testCart}]);
+    });
+  }));
+
+  it('should remove Article', async(() => {
+    let store: CartStoreService;
+    store = TestBed.get(CartStoreService);
+    const testCart: PokemonCardDTO = {
+      id: '1234',
+      name: 'test'
+    };
+    store.articleAdded(testCart);
+    store.articleRemoved(testCart);
+    store.selectCart().subscribe(cart => {
+      expect(cart).toEqual([]);
+    });
+  }));
 });

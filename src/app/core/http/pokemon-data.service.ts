@@ -14,8 +14,12 @@ export class PokemonDataService {
   constructor(private http: HttpClient) { }
 
 
+  getRarities(): Observable<ApiResponse<string[]>> {
+    return this.http.get<ApiResponse<string[]>>('  https://api.pokemontcg.io/v2/rarities');
+  }
+
   getCardById(pokemonId: string): Observable<PokemonCardDTO> {
-    return this.http.get<PokemonCardDTO>(this.buildUrl("swsh4-25"));
+    return this.http.get<PokemonCardDTO>(this.buildUrl(pokemonId));
   }
 
   searchCard(queryParams: PokemonQueryParams): Observable<ApiResponse<PokemonCardDTO[]>> {

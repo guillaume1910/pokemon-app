@@ -1,13 +1,22 @@
 .home-container {
   max-width: 1344px;
   flex-grow: 1;
-  margin: 0 auto;
+  margin: 15px auto;
   position: relative;
   width: auto;
 }
 
-.input-full-width {
-  width: 100%;
+.home-loader {
+  margin: auto;
+}
+
+.form-group {
+  display: flex;
+  justify-content: space-around;
+}
+
+.form-field{
+  width: 40%;
 }
 
 .card-container {

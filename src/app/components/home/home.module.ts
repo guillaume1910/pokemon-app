@@ -8,19 +8,25 @@ import {ReactiveFormsModule} from '@angular/forms';
 import {HomeService} from './home.service';
 import {UiModule} from '../../shared/ui/ui.module';
 import {PipeModule} from '../../shared/pipes/pipe.module';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import {MatSelectModule} from '@angular/material/select';
+import {MatOptionModule} from '@angular/material/core';
 
 
 @NgModule({
   declarations: [HomeComponent],
-    imports: [
-        CommonModule,
-        HomeRoutingModule,
-        MatFormFieldModule,
-        MatInputModule,
-        ReactiveFormsModule,
-        UiModule,
-        PipeModule
-    ],
+  imports: [
+    CommonModule,
+    HomeRoutingModule,
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    UiModule,
+    PipeModule,
+    MatProgressSpinnerModule,
+    MatSelectModule,
+    MatOptionModule
+  ],
   providers: [HomeService]
 })
 export class HomeModule {

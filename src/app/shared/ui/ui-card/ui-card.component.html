@@ -3,15 +3,13 @@
     <mat-card-title>{{title}}</mat-card-title>
     <mat-card-subtitle>{{subtitle}}</mat-card-subtitle>
   </mat-card-header>
-  <img mat-card-image style=" width:240px; height: 340px" [src]="img">
+  <img mat-card-image class="ui-card-image" [src]="img">
   <mat-card-content>
-    <p>
-     {{content}}
-    </p>
+    <ng-content></ng-content>
   </mat-card-content>
-  <mat-card-actions>
-    <button mat-button [disabled]="count === 0" (click)="remove.emit()">remove</button>
-    {{count}}
-    <button mat-button (click)="add.emit()">add</button>
+  <mat-card-actions class="ui-card-actions">
+    <button mat-button [disabled]="count === 0" (click)="remove.emit()">-</button>
+    <span>{{count}}</span>
+    <button mat-button (click)="add.emit()">+</button>
   </mat-card-actions>
 </mat-card>
