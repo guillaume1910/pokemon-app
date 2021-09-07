@@ -10,24 +10,24 @@ import {MatIconModule} from '@angular/material/icon';
 import {MatButtonModule} from '@angular/material/button';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatSidenavModule} from '@angular/material/sidenav';
-import { CartOverviewComponent } from './components/cart-overview/cart-overview.component';
+import {CartOverviewComponent} from './components/cart-overview/cart-overview.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CartOverviewComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    CoreModule,
-    UiModule,
-    MatIconModule,
-    MatButtonModule,
-    MatBadgeModule,
-    MatSidenavModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        CoreModule,
+        UiModule,
+        MatIconModule,
+        MatButtonModule,
+        MatBadgeModule,
+        MatSidenavModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

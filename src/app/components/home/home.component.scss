@@ -7,7 +7,7 @@
 }
 
 .home-loader {
-  margin: auto;
+  margin: 5rem auto;
 }
 
 .form-group {
@@ -19,10 +19,46 @@
   width: 40%;
 }
 
-.card-container {
+.home-container-card {
   display: flex;
   flex-wrap: wrap;
   max-width: 1100px;
   justify-content: center;
   margin: auto;
+}
+
+.home-container-image {
+  max-height: 340px;
+  position: relative;
+  height: 100%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+
+  img {
+    position: absolute;
+  }
+}
+
+.home-card1 {
+  bottom: -180px;
+  left: 473px;
+  z-index: 1;
+}
+
+.home-card2 {
+  bottom: -114px;
+  left: 664px;
+}
+.home-card3 {
+  bottom: -135px;
+  left: 1014px;
+}
+.home-card4 {
+  bottom: -180px;
+  left: 1208px;
+}
+.home-card5 {
+  bottom: -220px;
+  left: 810px;
 }

@@ -1,24 +1,36 @@
 <div class="home-container">
-    <form [formGroup]="formGroup" class="form-group">
-      <mat-form-field class="form-field" appearance="outline">
-        <mat-label>Pokemon Name</mat-label>
-        <input matInput formControlName="name" placeholder="search by name">
-      </mat-form-field>
+  <form [formGroup]="formGroup" class="form-group">
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label>Pokemon Name</mat-label>
+      <input matInput formControlName="name" placeholder="search by name">
+    </mat-form-field>
 
-      <mat-form-field class="form-field" appearance="outline">
-        <mat-label>Rarities</mat-label>
-        <mat-select formControlName="rarity">
-          <mat-option>None</mat-option>
-          <mat-option *ngFor="let rarity of rarities$ | async" [value]="rarity">
-            {{rarity}}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </form>
+    <mat-form-field class="form-field" appearance="outline">
+      <mat-label>Rarities</mat-label>
+      <mat-select formControlName="rarity">
+        <mat-option>None</mat-option>
+        <mat-option *ngFor="let rarity of rarities$ | async" [value]="rarity">
+          {{rarity}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </form>
 </div>
 
 
-<div class="card-container" *ngIf="!isLoading && (pokemonCard$ | async) as pokemonCard">
+<ng-template #homeCard>
+  <div *ngIf="!isLoading" class="home-container-image">
+    <img class="home-card1" src="https://images.pokemontcg.io/xy4/64.png">
+    <img class="home-card2" src="https://images.pokemontcg.io/xy4/99.png">
+    <img class="home-card3" src="https://images.pokemontcg.io/xy4/103.png">
+    <img class="home-card4" src="https://images.pokemontcg.io/xy4/40.png">
+    <img class="home-card5" src="https://images.pokemontcg.io/xy4/13.png">
+  </div>
+</ng-template>
+
+
+
+<div class="home-container-card" *ngIf="!isLoading && (pokemonCard$ | async) as pokemonCard else homeCard">
   <ng-container *ngIf="pokemonCard && pokemonCard.data.length else noData">
     <ng-container *ngFor="let pokemon of pokemonCard.data; trackBy: trackByFn">
       <ui-card [title]="pokemon.name"

@@ -8,7 +8,7 @@ import {AppService} from './app.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'pokemon-app';
+  title = 'Pokemon Card Shop';
   cartSize$: Observable<number> = this.facade.cartSize$
 
   constructor(private facade: AppService) {
